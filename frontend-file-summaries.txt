@@ -1,0 +1,21 @@
+{
+  "frontend/src/index.css": "Global styles with a dark photo-editor OKLCH color system featuring teal and amber accents, custom scrollbar styling, and editor-specific utility classes.",
+  "frontend/tailwind.config.js": "Extended Tailwind config with Space Grotesk/Inter fonts, custom editor palette (dark charcoal panels), teal/amber accent colors, and editor-specific shadow/animation tokens.",
+  "frontend/src/utils/filterPresets.ts": "Defines 9 filter presets (Original, Vivid, B&W, Sepia, Warm, Cool, Fade, Dramatic, Matte) with CSS filter strings and metadata.",
+  "frontend/src/utils/adjustmentFilters.ts": "Converts brightness/contrast/saturation/sharpness slider values (-100 to +100) into CSS filter strings and combines them with preset filters.",
+  "frontend/src/utils/canvasTransform.ts": "Canvas utility functions for drawing transformed images (rotation, flip, crop) and exporting the final edited image as a PNG blob.",
+  "frontend/src/hooks/useImageUpload.ts": "Custom hook managing image file selection, format validation (JPG/PNG/WebP), drag-and-drop, and loading state.",
+  "frontend/src/hooks/useImageTransform.ts": "Custom hook managing rotation, flip, and crop transformation state with action handlers.",
+  "frontend/src/hooks/useFilters.ts": "Custom hook managing the active filter preset selection from the filter presets list.",
+  "frontend/src/hooks/useAdjustments.ts": "Custom hook managing brightness/contrast/saturation/sharpness adjustment values with reset functionality.",
+  "frontend/src/hooks/useImageExport.ts": "Custom hook that renders all edits onto a full-resolution canvas and triggers a PNG download.",
+  "frontend/src/hooks/useQueries.ts": "Placeholder module; no backend queries needed for this fully client-side photo editor.",
+  "frontend/src/components/ImageCanvas.tsx": "Canvas component that renders the uploaded image with all transformations and CSS filters applied in real-time.",
+  "frontend/src/components/TransformToolbar.tsx": "Left panel toolbar with rotate CW/CCW, flip H/V, crop toggle, and reset buttons with tooltips and active state styling.",
+  "frontend/src/components/CropTool.tsx": "Interactive crop overlay with draggable corner/edge handles, rule-of-thirds grid, and apply/cancel actions.",
+  "frontend/src/components/FilterStrip.tsx": "Horizontal scrollable filter strip showing thumbnail previews of each filter preset with active highlight.",
+  "frontend/src/components/AdjustmentsPanel.tsx": "Right panel with four labeled sliders (brightness, contrast, saturation, sharpness) ranging -100 to +100 with reset button.",
+  "frontend/src/components/ExportButton.tsx": "Export button that triggers PNG download with loading spinner during export.",
+  "frontend/src/pages/EditorPage.tsx": "Main editor page composing all components into a professional dark-mode layout with toolbar, canvas, left/right panels, filter strip, and footer.",
+  "frontend/src/App.tsx": "Root app component that renders the EditorPage directly as the single-page application."
+}

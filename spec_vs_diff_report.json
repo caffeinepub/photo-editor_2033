@@ -1,0 +1,67 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-24T11:30:35.228Z",
+  "summary": "The diff implements a comprehensive photo editing web app covering most requirements. All six REQs appear substantially addressed: image upload (REQ-1), transform tools including crop with draggable handles/rotate/flip (REQ-2), filter presets with thumbnails (REQ-3), adjustment sliders (REQ-4), export functionality (REQ-5), and dark-mode professional UI (REQ-6). A few minor gaps are noted due to omitted utility files.",
+  "missing_requirements": [
+    {
+      "id": "REQ-3",
+      "requirement": "At least 7 filter presets are displayed as thumbnail previews below the canvas",
+      "reason": "The filterPresets utility file (frontend/src/utils/filterPresets.ts) is among the omitted files due to diff limits, so we cannot confirm whether at least 7 filter presets are actually defined. The FilterStrip component exists and maps over filters, but the actual preset count is unverifiable.",
+      "evidence": [
+        "frontend/src/components/FilterStrip.tsx",
+        "frontend/src/hooks/useFilters.ts"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "requirement": "Exported image resolution matches the original uploaded image dimensions; all active filters, adjustments, and transformations are baked into the exported file",
+      "reason": "The exportImageAsBlob utility is referenced in useImageExport.ts but its implementation is in frontend/src/utils/canvasTransform.ts, which was omitted from the diff due to file limits. We cannot verify that the export renders at full original resolution with all edits baked in.",
+      "evidence": [
+        "frontend/src/hooks/useImageExport.ts"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Internet Identity authentication integration (login/logout, actor creation, identity provider wrapping the app)",
+      "reason": "The build request does not mention any authentication or Internet Identity login. The diff includes useInternetIdentity.ts, useActor.ts, and InternetIdentityProvider wrapping the app in main.tsx, none of which were requested.",
+      "evidence": [
+        "frontend/src/hooks/useInternetIdentity.ts",
+        "frontend/src/hooks/useActor.ts",
+        "frontend/src/main.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.72,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/AdjustmentsPanel.tsx",
+    "frontend/src/components/CropTool.tsx",
+    "frontend/src/components/ExportButton.tsx",
+    "frontend/src/components/FilterStrip.tsx",
+    "frontend/src/components/ImageCanvas.tsx",
+    "frontend/src/components/TransformToolbar.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useAdjustments.ts",
+    "frontend/src/hooks/useFilters.ts",
+    "frontend/src/hooks/useImageExport.ts",
+    "frontend/src/hooks/useImageTransform.ts",
+    "frontend/src/hooks/useImageUpload.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/EditorPage.tsx",
+    "frontend/src/utils/adjustmentFilters.ts",
+    "frontend/src/utils/canvasTransform.ts",
+    "frontend/src/utils/filterPresets.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

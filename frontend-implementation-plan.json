@@ -1,0 +1,249 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "PixelCraft Editor - Photo Editing Web App",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Build photo upload and preview canvas functionality",
+      "acceptanceCriteria": [
+        "User can click an upload button to select an image from their device",
+        "Selected image is displayed in a prominent preview canvas",
+        "Supported formats include JPG, PNG, and WebP"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/EditorPage.tsx",
+          "operation": "create",
+          "description": "Create the main editor page component containing the photo upload button, canvas preview area, and layout structure for the photo editor. Include file input that accepts JPG, PNG, and WebP formats. Display the uploaded image in a central canvas element with proper sizing and centering."
+        },
+        {
+          "path": "frontend/src/hooks/useImageUpload.ts",
+          "operation": "create",
+          "description": "Create a custom hook to handle image file selection, validation of supported formats (JPG, PNG, WebP), and loading the image data. Return the loaded image, dimensions, and upload handler function."
+        },
+        {
+          "path": "frontend/src/components/ImageCanvas.tsx",
+          "operation": "create",
+          "description": "Create the central canvas component that displays the uploaded image. This component will render the image preview and serve as the foundation for all editing operations. Include responsive sizing to fit the canvas area while maintaining aspect ratio."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the EditorPage into the app routing. Add a route for the editor page as the main application view."
+        },
+        {
+          "path": "frontend/public/assets/generated/pixelcraft-logo.dim_256x256.png",
+          "operation": "create",
+          "description": "Wire the generated dark-themed photo editor app logo (abstract camera aperture/lens icon with teal and amber gradient accents on dark background) into the application. Reference this file at workspace path frontend/public/assets/generated/pixelcraft-logo.dim_256x256.png in the header/toolbar component."
+        },
+        {
+          "path": "frontend/public/assets/generated/sample-photo.dim_1200x800.png",
+          "operation": "create",
+          "description": "Wire the generated sample photo (vibrant landscape with rich colors) as a placeholder for the editor canvas default state. Reference this file at workspace path frontend/public/assets/generated/sample-photo.dim_1200x800.png to display when no user image is uploaded yet."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Implement crop, rotate, and flip transformation tools",
+      "acceptanceCriteria": [
+        "Crop tool renders a resizable selection box over the image",
+        "Rotate buttons rotate the image by 90° increments",
+        "Flip buttons mirror the image horizontally and vertically",
+        "All transformations update the canvas preview in real-time"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/TransformToolbar.tsx",
+          "operation": "create",
+          "description": "Create a toolbar component containing buttons for rotate (90° clockwise/counter-clockwise) and flip (horizontal/vertical) operations. Include clear icons and labels for each transformation action."
+        },
+        {
+          "path": "frontend/src/components/CropTool.tsx",
+          "operation": "create",
+          "description": "Create a crop tool component that overlays a resizable selection box with draggable handles over the canvas. Allow users to adjust the crop area by dragging corner and edge handles. Include apply and cancel actions."
+        },
+        {
+          "path": "frontend/src/hooks/useImageTransform.ts",
+          "operation": "create",
+          "description": "Create a custom hook to manage image transformation state (rotation angle, flip flags, crop coordinates). Provide functions to apply rotate, flip, and crop operations. Return the current transformation state and transformation handler functions."
+        },
+        {
+          "path": "frontend/src/utils/canvasTransform.ts",
+          "operation": "create",
+          "description": "Create utility functions to apply transformations to a canvas context: rotate image by 90° increments, flip horizontally/vertically, and crop to specified coordinates. These functions will be used to render the transformed image in real-time."
+        },
+        {
+          "path": "frontend/src/components/ImageCanvas.tsx",
+          "operation": "modify",
+          "description": "Update the canvas component to apply active transformations in real-time. Integrate the transformation state from useImageTransform hook and use canvasTransform utilities to render the transformed image."
+        },
+        {
+          "path": "frontend/src/pages/EditorPage.tsx",
+          "operation": "modify",
+          "description": "Integrate TransformToolbar and CropTool components into the editor layout. Position the transformation toolbar in the top toolbar area or left panel for easy access."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Implement one-click photo filters and effects",
+      "acceptanceCriteria": [
+        "At least 7 filter presets are displayed as thumbnail previews below the canvas",
+        "Clicking a filter applies it instantly to the main canvas preview",
+        "Active filter is visually highlighted",
+        "A 'None' / original option is available to reset filters"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/FilterStrip.tsx",
+          "operation": "create",
+          "description": "Create a filter strip component displaying at least 7 filter presets (Vivid, B&W, Sepia, Warm, Cool, Fade, Sharpen, and None/Original) as thumbnail previews. Each filter thumbnail shows a preview of the effect. Highlight the active filter and handle filter selection."
+        },
+        {
+          "path": "frontend/src/hooks/useFilters.ts",
+          "operation": "create",
+          "description": "Create a custom hook to manage filter state and provide filter definitions. Define CSS filter values for each preset (Vivid, B&W, Sepia, Warm, Cool, Fade, Sharpen). Return the active filter, filter list, and filter selection handler."
+        },
+        {
+          "path": "frontend/src/utils/filterPresets.ts",
+          "operation": "create",
+          "description": "Create a configuration file defining all filter presets with their CSS filter string values (e.g., 'saturate(1.4) contrast(1.1)' for Vivid, 'grayscale(1)' for B&W, etc.). Export filter definitions for use in components and hooks."
+        },
+        {
+          "path": "frontend/src/components/ImageCanvas.tsx",
+          "operation": "modify",
+          "description": "Update the canvas component to apply the active CSS filter to the rendered image. Integrate the filter state from useFilters hook and apply the filter string to the canvas rendering context or image element."
+        },
+        {
+          "path": "frontend/src/pages/EditorPage.tsx",
+          "operation": "modify",
+          "description": "Integrate FilterStrip component into the editor layout. Position the filter strip at the bottom of the interface below the main canvas as specified in the design requirements."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Add real-time adjustment sliders for brightness, contrast, saturation, and sharpness",
+      "acceptanceCriteria": [
+        "Four labeled sliders are displayed in an adjustments panel",
+        "Each slider ranges from -100 to +100 with 0 as the default center",
+        "Canvas preview updates live as sliders are moved",
+        "A 'Reset Adjustments' button resets all sliders to 0"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/AdjustmentsPanel.tsx",
+          "operation": "create",
+          "description": "Create an adjustments panel component containing four labeled sliders for brightness, contrast, saturation, and sharpness. Each slider ranges from -100 to +100 with 0 as default. Include a 'Reset Adjustments' button to reset all sliders to 0."
+        },
+        {
+          "path": "frontend/src/hooks/useAdjustments.ts",
+          "operation": "create",
+          "description": "Create a custom hook to manage adjustment values (brightness, contrast, saturation, sharpness). Provide handlers for updating individual adjustment values and resetting all to 0. Return current adjustment values and handler functions."
+        },
+        {
+          "path": "frontend/src/utils/adjustmentFilters.ts",
+          "operation": "create",
+          "description": "Create utility functions to convert adjustment slider values (-100 to +100) into CSS filter strings. Map brightness, contrast, saturation, and sharpness values to appropriate CSS filter syntax."
+        },
+        {
+          "path": "frontend/src/components/ImageCanvas.tsx",
+          "operation": "modify",
+          "description": "Update the canvas component to apply live adjustment filters as the user moves sliders. Combine adjustment filters with active filter preset and render the result in real-time. Ensure the canvas updates immediately as adjustment values change."
+        },
+        {
+          "path": "frontend/src/pages/EditorPage.tsx",
+          "operation": "modify",
+          "description": "Integrate AdjustmentsPanel component into the editor layout. Position the adjustments panel in the right side panel area as specified in the design requirements."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Implement high-quality image export with all edits applied",
+      "acceptanceCriteria": [
+        "A clearly labeled 'Download' or 'Export' button is present",
+        "Clicking it triggers a browser download of the edited image as a PNG",
+        "Exported image resolution matches the original uploaded image dimensions",
+        "All active filters, adjustments, and transformations are baked into the exported file"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ExportButton.tsx",
+          "operation": "create",
+          "description": "Create an export button component with clear 'Download' or 'Export' labeling. When clicked, trigger the export process to download the edited image as a PNG file."
+        },
+        {
+          "path": "frontend/src/hooks/useImageExport.ts",
+          "operation": "create",
+          "description": "Create a custom hook to handle high-quality image export. Render all applied edits (transformations, filters, adjustments) onto a canvas at the original image resolution, convert to PNG blob, and trigger browser download. Ensure the exported file maintains original dimensions."
+        },
+        {
+          "path": "frontend/src/utils/canvasExport.ts",
+          "operation": "create",
+          "description": "Create utility functions to render the final edited image at full resolution. Apply all transformations, filters, and adjustments to a temporary canvas element sized to match the original image dimensions, then export as PNG blob with high quality settings."
+        },
+        {
+          "path": "frontend/src/pages/EditorPage.tsx",
+          "operation": "modify",
+          "description": "Integrate ExportButton component into the editor toolbar or prominent location. Ensure the export button is clearly visible and accessible to users."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Design a sleek, dark-mode photo editor UI with professional layout",
+      "acceptanceCriteria": [
+        "App uses a dark background (e.g., #1a1a2e or similar dark charcoal)",
+        "Tool icons and labels are clearly legible in white/light grey",
+        "Active tools and selected filters use a vivid accent color (e.g., teal or amber)",
+        "Layout has distinct zones: toolbar, canvas, tools panel, adjustments panel, and filter strip",
+        "The overall aesthetic feels professional and modern, comparable to a mobile photo editor"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Define dark-mode theme colors and global styles. Set dark charcoal/slate background (#1a1a2e or similar), white/light grey text for legibility, and vibrant accent colors (teal/amber) for active states. Apply these colors as CSS custom properties for consistent theming."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend Tailwind configuration with custom dark-mode color palette. Define charcoal background colors, light text colors, and teal/amber accent colors. Configure these colors to be available throughout the component library."
+        },
+        {
+          "path": "frontend/src/components/EditorLayout.tsx",
+          "operation": "create",
+          "description": "Create a layout component defining the professional editor structure: top toolbar, central canvas area, left tools panel, right adjustments panel, and bottom filter strip. Use dark theme colors and ensure distinct visual zones for each section."
+        },
+        {
+          "path": "frontend/src/pages/EditorPage.tsx",
+          "operation": "modify",
+          "description": "Wrap the editor page content in the EditorLayout component to apply the professional dark-mode layout structure. Ensure all editor components (toolbar, canvas, panels, filter strip) are positioned in their designated zones."
+        },
+        {
+          "path": "frontend/src/components/ImageCanvas.tsx",
+          "operation": "modify",
+          "description": "Apply dark-mode styling to the canvas component. Ensure the canvas area has appropriate padding, border, and background color to stand out against the dark interface."
+        },
+        {
+          "path": "frontend/src/components/TransformToolbar.tsx",
+          "operation": "modify",
+          "description": "Apply dark-mode styling with white/light grey icons and labels. Use teal/amber accent colors for active tool states."
+        },
+        {
+          "path": "frontend/src/components/AdjustmentsPanel.tsx",
+          "operation": "modify",
+          "description": "Apply dark-mode styling to the adjustments panel. Use white/light grey for labels and slider tracks, with teal/amber accents for slider handles and active states."
+        },
+        {
+          "path": "frontend/src/components/FilterStrip.tsx",
+          "operation": "modify",
+          "description": "Apply dark-mode styling to the filter strip. Use teal/amber border or background highlight for the active filter thumbnail. Ensure filter thumbnails have clear contrast against the dark background."
+        }
+      ]
+    }
+  ]
+}

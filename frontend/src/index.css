@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Dark editor theme - light mode still dark for photo editor */
+    --background: 0.14 0.01 260;
+    --foreground: 0.92 0.01 260;
+    --card: 0.18 0.015 260;
+    --card-foreground: 0.92 0.01 260;
+    --popover: 0.2 0.015 260;
+    --popover-foreground: 0.92 0.01 260;
+    --primary: 0.72 0.18 185;
+    --primary-foreground: 0.1 0.01 260;
+    --secondary: 0.22 0.015 260;
+    --secondary-foreground: 0.85 0.01 260;
+    --muted: 0.22 0.015 260;
+    --muted-foreground: 0.58 0.02 260;
+    --accent: 0.78 0.16 75;
+    --accent-foreground: 0.1 0.01 260;
+    --destructive: 0.62 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.28 0.015 260;
+    --input: 0.25 0.015 260;
+    --ring: 0.72 0.18 185;
+
+    --chart-1: 0.72 0.18 185;
+    --chart-2: 0.78 0.16 75;
+    --chart-3: 0.65 0.2 300;
+    --chart-4: 0.7 0.18 140;
+    --chart-5: 0.62 0.22 25;
+
+    --sidebar: 0.16 0.015 260;
+    --sidebar-foreground: 0.92 0.01 260;
+    --sidebar-primary: 0.72 0.18 185;
+    --sidebar-primary-foreground: 0.1 0.01 260;
+    --sidebar-accent: 0.22 0.015 260;
+    --sidebar-accent-foreground: 0.85 0.01 260;
+    --sidebar-border: 0.28 0.015 260;
+    --sidebar-ring: 0.72 0.18 185;
+
+    /* Custom editor tokens */
+    --editor-bg: 0.12 0.01 260;
+    --editor-panel: 0.16 0.015 260;
+    --editor-toolbar: 0.14 0.012 260;
+    --editor-canvas-bg: 0.09 0.008 260;
+    --teal: 0.72 0.18 185;
+    --amber: 0.78 0.16 75;
+  }
+
+  .dark {
+    --background: 0.12 0.01 260;
+    --foreground: 0.92 0.01 260;
+    --card: 0.16 0.015 260;
+    --card-foreground: 0.92 0.01 260;
+    --popover: 0.18 0.015 260;
+    --popover-foreground: 0.92 0.01 260;
+    --primary: 0.72 0.18 185;
+    --primary-foreground: 0.1 0.01 260;
+    --secondary: 0.2 0.015 260;
+    --secondary-foreground: 0.85 0.01 260;
+    --muted: 0.2 0.015 260;
+    --muted-foreground: 0.55 0.02 260;
+    --accent: 0.78 0.16 75;
+    --accent-foreground: 0.1 0.01 260;
+    --destructive: 0.62 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.26 0.015 260;
+    --input: 0.22 0.015 260;
+    --ring: 0.72 0.18 185;
+  }
+
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: oklch(0.16 0.015 260);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.32 0.02 260);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.42 0.02 260);
+  }
+}
+
+@layer utilities {
+  .editor-panel {
+    background: oklch(0.16 0.015 260);
+    border-color: oklch(0.26 0.015 260);
+  }
+  .editor-toolbar {
+    background: oklch(0.14 0.012 260);
+    border-color: oklch(0.24 0.015 260);
+  }
+  .editor-canvas-bg {
+    background: oklch(0.09 0.008 260);
+  }
+  .teal-glow {
+    box-shadow: 0 0 12px oklch(0.72 0.18 185 / 0.4);
+  }
+  .amber-glow {
+    box-shadow: 0 0 12px oklch(0.78 0.16 75 / 0.4);
+  }
+  .slider-teal [data-radix-slider-thumb] {
+    background: oklch(0.72 0.18 185);
+    border-color: oklch(0.72 0.18 185);
+  }
+}

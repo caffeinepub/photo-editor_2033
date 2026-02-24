@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "A high-quality photo editing Android app (APK). The app will allow users to edit photos with various tools and filters.",
+  "architectural_notes": [
+    "Target platform: Android APK",
+    "Focus on high-quality image processing and output"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Dark-themed photo editor app logo mark — abstract camera aperture or lens icon with teal and amber gradient accents on a dark background (pixelcraft-logo.dim_256x256.png)\n- Placeholder/sample photo for the editor canvas default state — a vibrant landscape photo with rich colors (sample-photo.dim_1200x800.png)",
+  "existing_features": [
+    {
+      "id": "feature-build-a-photo-editing-application-where-users-can-upload-a-photo-from-their-device-and-see-it-displayed-in-a-central-canvas-preview-area",
+      "title": "Build a photo editing application where users can upload a photo from their device and see it displayed in a central canvas/preview area.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-core-photo-transformation-tools-crop-with-draggable-handles-rotate-90-clockwise-counter-clockwise-and-flip-horizontal-vertical",
+      "title": "Implement core photo transformation tools: crop (with draggable handles), rotate (90° clockwise/counter-clockwise), and flip (horizontal/vertical).",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-set-of-one-click-photo-filters-effects-e-g-vivid-b-w-sepia-warm-cool-fade-sharpen-that-are-applied-via-css-canvas-filters-to-the-preview-image",
+      "title": "Implement a set of one-click photo filters/effects (e.g., Vivid, B&W, Sepia, Warm, Cool, Fade, Sharpen) that are applied via CSS/Canvas filters to the preview image.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-adjustment-sliders-for-brightness-contrast-saturation-and-sharpness-that-modify-the-image-in-real-time-as-the-user-drags-each-slider",
+      "title": "Add adjustment sliders for brightness, contrast, saturation, and sharpness that modify the image in real-time as the user drags each slider.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-high-quality-image-export-feature-that-renders-all-applied-edits-transformations-filters-adjustments-onto-a-canvas-element-and-downloads-the-result-as-a-png-file-at-the-original-image-resolution",
+      "title": "Implement a high-quality image export feature that renders all applied edits (transformations, filters, adjustments) onto a Canvas element and downloads the result as a PNG file at the original image resolution.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-design-a-sleek-dark-mode-photo-editor-ui-with-a-deep-charcoal-slate-color-palette-crisp-white-typography-and-vibrant-accent-highlights-layout-should-follow-a-professional-editor-pattern-top-toolbar-central-canvas-left-right-side-panels-for-tools-and-adjustments-and-a-bottom-filter-strip",
+      "title": "Design a sleek, dark-mode photo editor UI with a deep charcoal/slate color palette, crisp white typography, and vibrant accent highlights. Layout should follow a professional editor pattern: top toolbar, central canvas, left/right side panels for tools and adjustments, and a bottom filter strip.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Photo editing core: crop, rotate, flip tools",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Filters and effects for photos",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Brightness, contrast, saturation, and color adjustment sliders",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "High-quality image export/save functionality",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Photo Editor",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

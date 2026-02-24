@@ -1,0 +1,137 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-build-a-photo-editing-application-where-users-can-upload-a-photo-from-their-device-and-see-it-displayed-in-a-central-canvas-preview-area",
+      "featureTitle": "Build a photo editing application where users can upload a photo from their device and see it displayed in a central canvas/preview area.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/ImageCanvas.tsx",
+        "frontend/src/hooks/useImageUpload.ts",
+        "frontend/src/pages/EditorPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-core-photo-transformation-tools-crop-with-draggable-handles-rotate-90-clockwise-counter-clockwise-and-flip-horizontal-vertical",
+      "featureTitle": "Implement core photo transformation tools: crop (with draggable handles), rotate (90° clockwise/counter-clockwise), and flip (horizontal/vertical).",
+      "files": [
+        "frontend/src/components/CropTool.tsx",
+        "frontend/src/components/ImageCanvas.tsx",
+        "frontend/src/components/TransformToolbar.tsx",
+        "frontend/src/hooks/useImageTransform.ts",
+        "frontend/src/pages/EditorPage.tsx",
+        "frontend/src/utils/canvasTransform.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-set-of-one-click-photo-filters-effects-e-g-vivid-b-w-sepia-warm-cool-fade-sharpen-that-are-applied-via-css-canvas-filters-to-the-preview-image",
+      "featureTitle": "Implement a set of one-click photo filters/effects (e.g., Vivid, B&W, Sepia, Warm, Cool, Fade, Sharpen) that are applied via CSS/Canvas filters to the preview image.",
+      "files": [
+        "frontend/src/components/FilterStrip.tsx",
+        "frontend/src/components/ImageCanvas.tsx",
+        "frontend/src/hooks/useFilters.ts",
+        "frontend/src/pages/EditorPage.tsx",
+        "frontend/src/utils/filterPresets.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-adjustment-sliders-for-brightness-contrast-saturation-and-sharpness-that-modify-the-image-in-real-time-as-the-user-drags-each-slider",
+      "featureTitle": "Add adjustment sliders for brightness, contrast, saturation, and sharpness that modify the image in real-time as the user drags each slider.",
+      "files": [
+        "frontend/src/components/AdjustmentsPanel.tsx",
+        "frontend/src/components/ImageCanvas.tsx",
+        "frontend/src/hooks/useAdjustments.ts",
+        "frontend/src/pages/EditorPage.tsx",
+        "frontend/src/utils/adjustmentFilters.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-high-quality-image-export-feature-that-renders-all-applied-edits-transformations-filters-adjustments-onto-a-canvas-element-and-downloads-the-result-as-a-png-file-at-the-original-image-resolution",
+      "featureTitle": "Implement a high-quality image export feature that renders all applied edits (transformations, filters, adjustments) onto a Canvas element and downloads the result as a PNG file at the original image resolution.",
+      "files": [
+        "frontend/src/components/ExportButton.tsx",
+        "frontend/src/hooks/useImageExport.ts",
+        "frontend/src/pages/EditorPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-design-a-sleek-dark-mode-photo-editor-ui-with-a-deep-charcoal-slate-color-palette-crisp-white-typography-and-vibrant-accent-highlights-layout-should-follow-a-professional-editor-pattern-top-toolbar-central-canvas-left-right-side-panels-for-tools-and-adjustments-and-a-bottom-filter-strip",
+      "featureTitle": "Design a sleek, dark-mode photo editor UI with a deep charcoal/slate color palette, crisp white typography, and vibrant accent highlights. Layout should follow a professional editor pattern: top toolbar, central canvas, left/right side panels for tools and adjustments, and a bottom filter strip.",
+      "files": [
+        "frontend/src/components/AdjustmentsPanel.tsx",
+        "frontend/src/components/FilterStrip.tsx",
+        "frontend/src/components/ImageCanvas.tsx",
+        "frontend/src/components/TransformToolbar.tsx",
+        "frontend/src/index.css",
+        "frontend/src/pages/EditorPage.tsx",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
